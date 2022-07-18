@@ -1,0 +1,262 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/style.css" rel="stylesheet" />
+<link href="~/Content/animate.min.css" rel="stylesheet" />
+<link href="~/Content/materialdesignicons.min.css" rel="stylesheet" />
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
+    </div>
+</div>
+
+<nav class="pcoded-navbar">
+    <div class="navbar-wrapper">
+        <div class="navbar-brand header-logo">
+            <a href="" class="b-brand">
+                <div class="b-bg">
+                    <i class="feather icon-trending-up"></i>
+                </div>
+                <span class="b-title">Evandro</span>
+            </a>
+            <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+        </div>
+        <div class="navbar-content scroll-div">
+            <ul class="nav pcoded-inner-navbar" id="side-main-menu"></ul>
+
+            <ul class="nav pcoded-inner-navbar">
+                <li>
+                    <a href="@Url.Action("Index", "Login" )">
+                        <span class="pcoded-micon"><i class="feather icon-power"></i></span>Sair
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="navbar pcoded-header navbar-expand-lg navbar-light">
+    <div class="m-header">
+        <a class="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a>
+        <a href="" class="b-brand">
+            <div class="b-bg">
+                <i class="feather icon-trending-up"></i>
+            </div>
+            <span class="b-title">B.I</span>
+        </a>
+    </div>
+    <a class="mobile-menu" id="mobile-header" href="javascript:">
+        <i class="feather icon-more-horizontal"></i>
+    </a>
+
+</header>
+
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-inner-content">
+
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <div class="col-sm-12">
+
+                        <ul class="nav nav-tabs" id="tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active text-uppercase" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"></a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-inner-content">
+
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <div class="col-sm-12">
+
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <iframe id="myFrame" src=""></iframe>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Menu.js" type="text/javascript"></script>
+<script src="~/Scripts/vendor-all.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script>
+    var tab_counter = 2;
+
+    $(function () {
+        myMenu();
+        $('.nav-tabs > li:first-child > a').text("Central");
+        document.getElementById("myFrame").src = "/Evandro/Template/Central";
+        document.getElementById("myFrame").style.height = ($(document).height() - 120) + "px";
+        document.getElementById("myFrame").style.position = "relative";
+    });
+
+    function addTab(lnk) {
+
+         $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Sessao","Template")',
+            data: null,
+             success: function (data) {
+
+                 if (data.success) {
+
+                 } else {
+                     window.location.href = "/ECAP/Login"
+                 }
+
+
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        });
+
+
+        $("#tabs a").each(function (n) {
+
+            $(this).removeClass().addClass("nav-link");
+        });
+
+
+        $('.pcoded-navbar').each(function (n) {
+
+            if (window.matchMedia("(max-width:991px)").matches) {
+             $(this).removeClass().addClass("pcoded-navbar");
+            }
+
+        });
+
+        $('.mobile-menu').each(function (n) {
+
+            if (window.matchMedia("(max-width:991px)").matches) {
+             $(this).removeClass().addClass("mobile-menu");
+            }
+
+        });
+
+
+        $("#myTabContent div").each(function (n) {
+            $(this).removeClass().addClass("tab-pane fade");
+        });
+        var list = document.getElementById("tabs");
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        var i = document.createElement('span');
+        a.href = "#tabs_" + tab_counter;
+        a.className = "nav-link active";
+        a.setAttribute("role", "tab");
+        a.setAttribute("data-toggle", "tab");
+        var conteudoNovo = document.createTextNode($(lnk).attr('title'));
+        a.appendChild(conteudoNovo);
+        li.className = "nav-item";
+        i.className = "feather icon-x";
+        li.appendChild(a);
+        li.appendChild(i);
+        list.appendChild(li);
+
+
+        var listIframe = document.getElementById("myTabContent");
+
+        var d = document.createElement('div')
+        var x = document.createElement("IFRAME");
+        d.className = "tab-pane fade active show";
+        d.id = "tabs_" + tab_counter;
+        x.setAttribute("src", $(lnk).attr('src'));
+        x.id = tab_counter;
+        x.style.height = ($(document).height() - 120) + "px";
+        x.style.position = "relative";
+        d.appendChild(x);
+        listIframe.appendChild(d);
+        tab_counter = tab_counter + 1;
+
+
+    }
+    $(".nav-tabs").on("click", "a", function (e) {
+        e.preventDefault();
+
+    })
+        .on("click", "span", function (e) {
+            var anchor = $(this).siblings('a');
+            $(anchor.attr('href')).remove();
+            $(this).parent().remove();
+
+            $('.nav-tabs > li:last-child > a').addClass("active");
+            $('#myTabContent div:last-child').addClass("active show");
+
+        });
+
+    window.onresize = function () {
+        var altura = ($(document).height() - 120) + "px";
+
+        $("iframe").each(function () {
+            $(this).attr("style", "height: " + altura + "; position: relative;  width: 100%;");
+        });
+
+
+    };
+
+
+
+</script>
+
+<style>
+
+    .slimScrollBar {
+        background-color: #FFFFFF !important;
+        width: 12px !important;
+    }
+
+    .nav-tabs > li {
+        position: relative;
+    }
+
+        .nav-tabs > li > a {
+            display: inline-block;
+        }
+
+        .nav-tabs > li > span {
+            /*display:none;*/
+            cursor: pointer;
+            position: absolute;
+            right: 6px;
+            top: 14px;
+            color: #007065;
+        }
+
+        .nav-tabs > li:hover > span {
+            display: inline-block;
+        }
+
+    .tab-content iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+</style>

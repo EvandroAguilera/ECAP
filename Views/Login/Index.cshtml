@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kapella Bootstrap Admin Dashboard Template</title>
+    <!-- base:css -->
+    <link href="~/Content/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="~/Content/vendor.bundle.base.css" rel="stylesheet" />
+    <link href="~/Content/Login.css" rel="stylesheet" />
+</head>
+<script type="text/javascript">
+
+    var requerLogin = '@ViewData["requerLogin"]';
+    var msg = '@ViewData["msg"]';
+
+    if (requerLogin.length > 0 && msg == "requerLogin") {
+      window.top.location.href = "/BI/Login/Index";
+    }
+
+    $('.login-content [data-toggle="flip"]').click(function () {
+        $('.login-box').toggleClass('flipped');
+        return false;
+    });
+</script>
+
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
+                <div class="row flex-grow">
+                    <div class="col-lg-7 login-half-bg d-flex flex-row">
+                        <p class="text-white font-weight-medium text-center flex-grow align-self-end"></p>
+                    </div>
+                    <div class="col-lg-5 d-flex align-items-center justify-content-center">
+                        <div class="auth-form-transparent text-left p-3">
+                            <h4>Acesso ECAP</h4>
+                            <form class="pt-3" method="post">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail">Usuário</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend bg-transparent">
+                                            <span class="input-group-text bg-transparent border-right-0">
+                                                <i class="mdi mdi-account-outline text-primary"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control form-control-lg border-left-0" id="loginUsername" name="loginUsername" placeholder="Usuário">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword">Senha</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend bg-transparent">
+                                            <span class="input-group-text bg-transparent border-right-0">
+                                                <i class="mdi mdi-lock-outline text-primary"></i>
+                                            </span>
+                                        </div>
+                                        <input type="password" class="form-control form-control-lg border-left-0" id="loginPassword" , name="loginPassword" placeholder="Senha">
+                                    </div>
+                                </div>
+                                <div class="my-3">
+                                    <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Entrar</button>
+                                </div>
+                                @if (@ViewData["TxtAviso"] != null)
+                                {
+                                    <div style="text-align: left; color: #ff0000; padding: 1px 0px 0px 15px;">
+                                        <i class="mdi mdi mdi-alert text-primary" style="color: #ff0000 !important; font-size: 37px;"></i>
+                                        @ViewData["TxtAviso"]
+                                    </div>
+
+                                }
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/vendor.bundle.base.js"></script>
+    <script src="~/Scripts/template.js"></script>
+</body>
+
+</html>
