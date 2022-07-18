@@ -8,6 +8,7 @@ namespace ECAP.Controllers
 {
     public class HomeController : Controller
     {
+        // Teste
         public ActionResult Index()
         {
             return View();
