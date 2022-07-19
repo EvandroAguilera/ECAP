@@ -2,9 +2,9 @@
 # ECAP
 
 # Versão .Net Framework 4.7.2 e SQL Server. 
-Imagens para configurar IIS na versão  4
+Imagens para configurar IIS na versão  4 - "Tem que criar o Pools de Aplicativos"
 
-![image](https://user-images.githubusercontent.com/45047484/176754789-c12351a3-afc9-49c0-b07b-099bea92be12.png)
+
 ![image](https://user-images.githubusercontent.com/45047484/179845885-6ff164a0-34cd-4442-a7c1-dbbe79438d21.png)
 
 
