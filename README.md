@@ -5,6 +5,8 @@
 Imagens para configurar IIS na versão  4
 
 ![image](https://user-images.githubusercontent.com/45047484/176754789-c12351a3-afc9-49c0-b07b-099bea92be12.png)
+![image](https://user-images.githubusercontent.com/45047484/179845885-6ff164a0-34cd-4442-a7c1-dbbe79438d21.png)
+
 
 ![image](https://user-images.githubusercontent.com/45047484/176754684-b5c77982-07ff-4659-bf2a-9ace6bc228de.png)
 
