@@ -146,7 +146,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AgendaController.cs" />
+    <Compile Include="Controllers\DepartamentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PessoaController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="DAO\DataContext.cs" />
@@ -155,8 +157,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MAP\AgendaMap.cs" />
+    <Compile Include="MAP\DepartamentoMap.cs" />
+    <Compile Include="MAP\PessoaMAP.cs" />
     <Compile Include="MAP\UsuarioMap.cs" />
     <Compile Include="Models\Agenda.cs" />
+    <Compile Include="Models\Departamento.cs" />
+    <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -258,6 +264,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.autoNumeric.1.6.2.js" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.select2.js" />
@@ -290,6 +297,13 @@
     <Content Include="Views\Template\Central.cshtml" />
     <Content Include="Views\Agenda\Editar.cshtml" />
     <Content Include="Views\Agenda\Excluir.cshtml" />
+    <Content Include="Views\Departamento\Create.cshtml" />
+    <Content Include="Views\Departamento\Editar.cshtml" />
+    <Content Include="Views\Departamento\Excluir.cshtml" />
+    <Content Include="Views\Departamento\Index.cshtml" />
+    <Content Include="Views\Pessoa\Index.cshtml" />
+    <Content Include="Views\Pessoa\Create.cshtml" />
+    <Content Include="Views\Pessoa\Editar.cshtml" />
     <None Include="Views\Template\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>

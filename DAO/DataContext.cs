@@ -14,12 +14,16 @@ namespace ECAP.DAO
 
         public DbSet<Agenda> Agenda { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Departamento> Departamento { get; set; }
+        public DbSet<Pessoa> Pessoa { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
             modelBuilder.Configurations.Add(new AgendaMap());
             modelBuilder.Configurations.Add(new UsuarioMap());
+            modelBuilder.Configurations.Add(new DepartamentoMap());
+            modelBuilder.Configurations.Add(new PessoaMAP());
 
             base.OnModelCreating(modelBuilder);
         }

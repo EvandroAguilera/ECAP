@@ -53,6 +53,8 @@ namespace ECAP.Controllers
                 foreach (Menu item in lMenu)
                 {
                     item.lSubMenu.Add(new SubMenu { titule = "Agenda", action = "/Evandro/Agenda/Index" });
+                    item.lSubMenu.Add(new SubMenu { titule = "Departamento", action = "/Evandro/Departamento/Index" });
+                    item.lSubMenu.Add(new SubMenu { titule = "Pessoa", action = "/Evandro/Pessoa/Index" });
                 }
                 return new JsonResult() { Data = new { success = true, menu = lMenu } };
 

@@ -1,0 +1,74 @@
+﻿@model  ECAP.Models.Pessoa
+
+@{
+    ViewBag.Title = "Pessoa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/materialdesignicons.min.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.autoNumeric.1.6.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnVoltar").button().click(function () {
+            document.location = '@Url.Action("Index", "Pessoa")';
+        });
+
+        $.each($('.Decimal2'), function (index, value) {
+            value.valeu = $.fn.autoNumeric.Format('id.name', value, { aSep: '.', aDec: ',', mDec: 2, mRound: 'B' });
+
+            $(value).autoNumeric({ aSep: '.', aDec: ',', mNum: 9, mDec: 2, mRound: 'B' }).bind('change', function () {
+                if (typeof (lTributos) != "undefined" && lTributos.length > 0)
+                    CalculaTributos();
+            }).bind('keypress', function () {
+                $(this).attr('edited', 'S');
+
+            });
+        });
+    });
+
+</script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="page-wrapper">
+        <div class="card">
+            <div class="card-header">
+                <h5>Editar Registro</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-xs-12 col-sm-4 col-md-3 col-lg-3 form-control-label">Nome</label>
+                            <div class="col-sm-2 col-md-5 mb-3">
+                                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", maxlength = "50", @autofocus = "autofocus" } })
+                                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xs-12 col-sm-4 col-md-3 col-lg-3 form-control-label">Salario</label>
+                            <div class="col-sm-2 col-md-5 mb-3">
+                                @Html.EditorFor(model => model.Salario, new { htmlAttributes = new { @class = "form-control Decimal2" } })
+                                @Html.ValidationMessageFor(model => model.Salario, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xs-12 col-sm-4 col-md-3 col-lg-3 form-control-label">Departamento</label>
+                            <div class="col-sm-2 col-md-3 mb-3">
+                                @Html.DropDownListFor(model => model.idDepartamento, null, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <div class="col-xs-12 col-sm-6 col-md-8 col-lg-4 offset-md-3">
+                                <button type="submit" class="btn btn-success" id="btnNovo"><i class="mdi mdi-content-save"></i>Salvar</button>
+                                <button type="button" class="btn btn-primary" id="btnVoltar"><i class="mdi mdi-undo-variant"></i>Voltar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
